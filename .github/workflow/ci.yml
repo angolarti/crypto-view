@@ -1,0 +1,22 @@
+name: CI
+on:
+  pasu:
+    branches:
+      - master
+
+jobs:
+  desploy:
+    runs-on: ubuntu:latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Get node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - name: Install dependencies
+        run: npm Install
+      - name: testing
+        run: CI=true npm test
+      - name: Build
+        run: npm
